@@ -15,14 +15,18 @@ pipeline {
 
         stage('BUILD') {
             steps {
-                bat 'dir'   // DEBUG: shows files
-                bat 'mvn clean install'
+                dir('demo12') {
+                    bat 'dir'              // optional debug
+                    bat 'mvn clean install'
+                }
             }
         }
 
         stage('TEST') {
             steps {
-                bat 'mvn test'
+                dir('demo12') {
+                    bat 'mvn test'
+                }
             }
         }
     }
